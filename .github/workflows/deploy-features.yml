@@ -1,0 +1,17 @@
+name: Test & Deploy
+on:
+  push:
+    branches:
+      - feature/**
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get repository
+        uses: actions/checkout@v3
+      - name: install deps
+        run: npm install
+      - name: unit tests
+        run: npm run test
+      - name: build app
+        run: npm run build
